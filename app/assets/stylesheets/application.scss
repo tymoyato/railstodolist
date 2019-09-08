@@ -10,6 +10,30 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+@import "bootswatch/litera/variables";
+@import "bootstrap";
+@import "bootswatch/litera/bootswatch";
+
+.slot-icon-right .form-control {
+    padding-left: 2.375rem;
+}
+
+.slot-icon-right .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.9rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.logout {
+    color: #f8f9fa;
+    text-decoration: none;
+    background-color: transparent;
+}
