@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+  <div class="mx-auto order-1">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="navbar-collapse collapse w-100 order-3">
+    <% unless user_signed_in? %>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <button type="button" class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-target="#Mlogin">Log in</button>
+        </li>
+        <li class="nav-item">
+            <button type="button" class="btn btn-secondary my-2 my-sm-0" data-toggle="modal" data-target="#Msignup">Sign up</button>
+        </li>
+      </ul>
+      <% else %>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button type="button" class="btn btn-danger my-2 my-sm-0">
+            <%= link_to('Log out', destroy_user_session_path, method: :delete, class:'logout') %>
+          </button>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= render 'users/sessions/new' %>
+<%= render 'users/registrations/new' %>
