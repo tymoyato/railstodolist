@@ -14,3 +14,26 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery3
+//= require popper
+//= require bootstrap
+
+input{
+  border:none;
+  background-color: transparent;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.fa-user-circle-o{
+  color: gray;
+}
+
+.input-group-prepend{
+  border: 1px gray solid;
+  padding: 10px;
+}
