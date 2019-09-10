@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'items/index'
+  get 'items/show'
+  get 'items/new'
+  get 'items/edit'
+  get 'lists/index'
+  get 'lists/show'
+  get 'lists/new'
+  get 'lists/edit'
+  get 'categories/index'
+  get 'categories/show'
+  get 'categories/new'
+  get 'categories/edit'
   root to: 'pages#home'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
