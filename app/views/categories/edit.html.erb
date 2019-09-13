@@ -1,2 +1,21 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="jumbotron">
+        <div class="form-group">
+          <%= form_for(@category) do |f| %>
+            <div class="field">
+              <%= f.label :update_a_category %><br />
+              <%= f.text_field :name, class:'form-control', placeholder:'Enter a category name' %>
+            </div>
+            <div class="field">
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            </div>
+            <br />
+            <div class="actions">
+              <%= f.submit class:'btn btn-success' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+ </div>

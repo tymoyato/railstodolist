@@ -1,2 +1,28 @@
-<h1>Lists#edit</h1>
-<p>Find me in app/views/lists/edit.html.erb</p>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="jumbotron">
+        <p class="lead">Edit your list</p>
+        <hr class="my-4">
+        <div class="form-group">
+          <%= form_for(@list) do |f| %>
+            <div class="field">
+              <%= f.label :create_a_list %><br />
+              <%= f.text_field :name, class:'form-control', placeholder:'Enter a list name' %>
+            </div>
+            <small id="emailHelp" class="form-text text-muted">A list is unique</small>
+            <div class="field">
+              <%= f.label :give_a_description %><br />
+              <%= f.text_field :description, class:'form-control', placeholder:'Enter a short description' %>
+            </div>
+            <div class="field">
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            </div>
+            <br />
+            <div class="actions">
+              <%= f.submit class:'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+ </div>

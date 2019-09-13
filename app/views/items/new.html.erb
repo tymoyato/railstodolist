@@ -1,2 +1,57 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="jumbotron">
+        <p class="lead">Here create your items</p>
+        <hr class="my-4">
+        <div class="form-group">
+          <%= form_for(@item) do |f| %>
+	          <div class="field">
+              <%= f.label :select_a_list %><br />
+              <%= f.select(:list_id, List.where(user_id: current_user.id).collect { |p| [ p.name, p.id ] }, {}, { class: "form-control" }) %>
+            </div>
+            <div class="field">
+              <%= f.label :create_a_item %><br />
+              <%= f.text_field :name, class:'form-control', placeholder:'Enter a item name' %>
+            </div>
+            <small id="emailHelp" class="form-text text-muted">A list is unique</small>
+            <div class="field">
+              <%= f.label :give_a_description %><br />
+              <%= f.text_field :description, class:'form-control', placeholder:'Enter a short description' %>
+            </div>
+            <div class="field">
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            </div>
+            <br />
+            <div class="actions">
+              <%= f.submit class:'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+ </div>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-md-6">
+    <div class="jumbotron">
+        <div class="list-group">
+          <% @items.each do |item| %>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">name: <%= item.name %></h5>
+              <small class="text-muted"><%= item.created_at %></small>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">description: <%= item.description %></h5>
+            </div>
+            </a>
+            <div class="d-flex w-100 justify-content-between">
+            <div class="button">
+              <%= link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
+            </div>
+          </div>
+         <% end %>
+       </div>
+    </div>
+  </div>
+</div>
