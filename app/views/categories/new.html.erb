@@ -1,2 +1,49 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="jumbotron">
+        <p class="lead">Here create categories of your lists</p>
+        <hr class="my-4">
+        <div class="form-group">
+          <%= form_for(@category) do |f| %>
+            <div class="field">
+              <%= f.label :create_a_category %><br />
+              <%= f.text_field :name, class:'form-control', placeholder:'Enter a category name' %>
+            </div>
+            <small id="emailHelp" class="form-text text-muted">A category is unique</small>
+            <div class="field">
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            </div>
+            <br />
+            <div class="actions">
+              <%= f.submit class:'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+ </div>
+
+ <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="jumbotron">
+          <div class="list-group">
+            <% @categories.each do |category| %>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= category.name %></h5>
+                <small class="text-muted"><%= category.created_at %></small>
+              </div>
+              </a>
+              <div class="d-flex w-100 justify-content-between">
+              <div class="button">
+                <%= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger my-2 my-sm-0' %>
+              </div>
+              <div class="button">
+                <%= link_to 'Edit', edit_category_path(category), class:'btn btn-success my-2 my-sm-0' %>
+              </div>
+            </div>
+           <% end %>
+         </div>
+      </div>
+    </div>
+ </div>
