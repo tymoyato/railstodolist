@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
   <div class="mx-auto order-1">
     <ul class="navbar-nav mx-auto">
-      <li class="nav-item">
+      <% if user_signed_in? %>
+        <li class="nav-item">
           <%= link_to "All", lists_path, class:'nav-link' %>
         </li>
-      <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Category", new_category_path, class:'nav-link' %>
         </li>
@@ -15,7 +15,7 @@
           <%= link_to "Item", new_item_path, class:'nav-link' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Archived</a>
+          <%= link_to "Archived", archived_path, class:'nav-link' %>
         </li>
       <% end %>
     </ul>
