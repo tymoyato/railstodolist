@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def index
-    @lists = List.includes(:items).where(user_id: current_user.id).all
+    @lists = List.includes(:items).where(user_id: current_user.id)
   end
 
   def show
@@ -15,12 +15,9 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.save
 
-    if @list.save
-      redirect_to new_list_path
-    else
-      render 'new'
-    end
+    redirect_to new_list_path
   end
 
   def edit
@@ -41,7 +38,7 @@ class ListsController < ApplicationController
     if @list.present?
       @list.destroy
     end
-    redirect_to new_item_path
+    redirect_to lists_path
   end
 
   private

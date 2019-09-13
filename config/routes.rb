@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get '/archived', to: 'pages#archived'
+
   resources :categories
   resources :lists
   resources :items

@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.12.3)
+      concurrent-ruby (~> 1.0)
     actioncable (5.2.3)
       actionpack (= 5.2.3)
       nio4r (~> 2.0)
@@ -118,6 +120,29 @@ GEM
       activemodel-serializers-xml (>= 1.0)
       activesupport (>= 5.0)
       request_store (>= 1.0)
+    dry-configurable (0.8.2)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.4, >= 0.4.7)
+    dry-container (0.7.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.1, >= 0.1.3)
+    dry-core (0.4.7)
+      concurrent-ruby (~> 1.0)
+    dry-equalizer (0.2.2)
+    dry-events (0.1.1)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.4)
+      dry-equalizer (~> 0.2)
+    dry-matcher (0.7.0)
+    dry-monads (1.2.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.4, >= 0.4.4)
+      dry-equalizer
+    dry-transaction (0.13.0)
+      dry-container (>= 0.2.8)
+      dry-events (>= 0.1.0)
+      dry-matcher (>= 0.7.0)
+      dry-monads (>= 0.4.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.11.1)
@@ -294,6 +319,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm (~> 4.11, >= 4.11.1)
   activeadmin
   bootsnap (>= 1.1.0)
   bootstrap
@@ -305,6 +331,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   draper
+  dry-transaction
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

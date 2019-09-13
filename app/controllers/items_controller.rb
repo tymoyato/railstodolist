@@ -16,7 +16,9 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find_by(id: params[:id])
-    if @item.present?
+    if @item.present? && @item.draft?
+      StartFinish.new.call(item: @item)
+    elsif @item.upfinish?
       @item.destroy
     end
     redirect_to new_item_path
