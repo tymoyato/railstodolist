@@ -36,6 +36,7 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find_by(id: params[:id])
     if @list.present?
+      ModelMailer.new_record_notification(@list, current_user).deliver_now
       @list.destroy
     end
     redirect_to lists_path
