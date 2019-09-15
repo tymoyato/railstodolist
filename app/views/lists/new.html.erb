@@ -5,9 +5,13 @@
         <hr class="my-4">
         <div class="form-group">
           <%= form_for(@list) do |f| %>
-	          <div class="field">
+            <div class="field">
               <%= f.label :select_a_category %><br />
               <%= f.select(:category_id, current_user.categories.collect { |p| [ p.name, p.id ] }, {}, { class: "form-control" }) %>
+            </div>
+            <div class="field">
+              <%= f.label :share_to_other %><br />
+              <%= f.select(:shared_id, @users.collect { |p| [ p.email, p.id ] }, { include_blank: true }, { class: "form-control" }) %>
             </div>
             <div class="field">
               <%= f.label :create_a_list %><br />
