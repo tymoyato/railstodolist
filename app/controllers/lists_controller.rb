@@ -11,6 +11,7 @@ class ListsController < ApplicationController
   def new
     @list = List.new
     @lists = List.where(user_id: current_user.id)
+    @users = User.all
   end
 
   def create
@@ -45,6 +46,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :description, :category_id, :user_id)
+    params.require(:list).permit(:name, :description, :category_id, :user_id, :shared_id)
   end
 end
